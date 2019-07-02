@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.sample.di.demo2.GreetingService" id="sr">
+	<property name="ko" ref="korea"></property>
+	<property name="eng" ref="english"></property>
+	</bean>
+	
+	<bean class="com.sample.di.demo2.KoreanGreeting" id="korea"></bean>
+	<bean class="com.sample.di.demo2.EnglishGreeting" id="english"></bean>	
+</beans>

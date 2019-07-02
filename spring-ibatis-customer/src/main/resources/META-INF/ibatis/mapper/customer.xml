@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap>
+	<select id="getInfoCustomer" parameterClass="map"  resultClass="kr.co.jhta.vo.Customer">
+		select
+			cu_id as no,
+			cu_name as name,
+			cu_nickname as nickname,
+			cu_tel as tel,
+			cu_email as email,
+			cu_address as addr,
+			cu_point as point,
+			cu_add_date as createDate
+		from
+			customer
+		where 1=1
+			<dynamic>
+				<isEqual prepend="and" property="keyword" compareValue="1">
+					cu_id = #val#
+				</isEqual>
+				<isEqual prepend="and" property="keyword" compareValue="2">
+					cu_name = #val#
+				</isEqual>
+				<isEqual prepend="and" property="keyword" compareValue="3">
+					cu_nickname = #val#
+				</isEqual>
+			</dynamic>
+	</select>
+	<select id="getAllCustomer" resultClass="kr.co.jhta.vo.Customer">
+		select
+			cu_id as no,
+			cu_name as name,
+			cu_nickname as nickname,
+			cu_tel as tel,
+			cu_email as email,
+			cu_address as addr,
+			cu_point as point,
+			cu_add_date as createDate
+		from
+			customer
+		order by
+			cu_id asc
+	</select>
+	<select id="getCusByNo" parameterClass="int" resultClass="kr.co.jhta.vo.Customer">
+			select
+			cu_id as no,
+			cu_name as name,
+			cu_nickname as nickname,
+			cu_tel as tel,
+			cu_email as email,
+			cu_address as addr,
+			cu_point as point,
+			cu_add_date as createDate
+		from
+			customer
+		where
+			cu_id = #value#
+	</select>
+</sqlMap>

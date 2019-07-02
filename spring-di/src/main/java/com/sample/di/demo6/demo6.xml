@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean class="com.sample.di.demo6.Goodmoring" id="goodmoring"></bean>
+<bean class="com.sample.di.demo6.Goodbye" id="goodbye"></bean>
+
+<!-- 
+	Setter Injection
+		setter 메소드를 정의하고, <property> 태그를 사용해서 setter 메소드를 선택한 다음 조립된 빈을 지정한다.
+ -->
+<bean class="com.sample.di.demo6.MessageService" id="messageservice">
+	<property name="bye" ref="goodbye"></property>
+	<property name="moring" ref="goodmoring"></property>
+</bean>
+
+<!-- 
+	Constructor Injection
+		생성자 메소드를 정의하고,
+		<constructor-arg/> 태그를 사용해서 조립될 빈을 지정한다.
+ -->
+ <bean class="com.sample.di.demo6.MessageService" id="messageservice2">
+ 
+<!--   	<constructor-arg index="0" ref="goodmoring"></constructor-arg>
+ 		<constructor-arg index="1" ref="goodbye"></constructor-arg>  -->
+<!--  		똑같은 타입일 때 인덱스를 지정해주고
+ 		
+ 		아닐땐 밑에 처럼 적으면 알아서 이름에 맞게 들어간다. -->
+ 
+	<constructor-arg ref="goodmoring" ></constructor-arg>
+ 	<constructor-arg ref="goodbye" ></constructor-arg> 
+ </bean>
+</beans>
+	
